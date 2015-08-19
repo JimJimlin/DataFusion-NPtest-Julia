@@ -10,7 +10,23 @@ function (NumofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
   for renew_startpoint = 0 : NumberofSensor   #renew startpoint to find threshold
 
     startpoint = (NumberofSensor - renew_startpoint)
-    sum_falsealarm = 0 #initial
+    sum_falsealarm = 0   #initial sum/fusion of falsealarm
+
+    for find_threshold = startpoint : NumberofSensor
+
+
+      buffer_sum = nchoosek(NumberOfSensor,flag_2)*((F_Sensor)^flag_2)*((1-F_Sensor)^(NumberOfSensor-flag_2))
+
+
+    end
+
 
   end
+
+
+
+
+
+
+
 end
