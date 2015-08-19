@@ -5,7 +5,12 @@
 
 function (NumofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
 
-  thrshold = 0
+  threshold = 0  #initial threshold
 
+  for renew_startpoint = 0 : NumberofSensor   #renew startpoint to find threshold
 
+    startpoint = (NumberofSensor - renew_startpoint)
+    sum_falsealarm = 0 #initial
+
+  end
 end
