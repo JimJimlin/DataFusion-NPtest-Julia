@@ -12,18 +12,25 @@ function (NumofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
     startpoint = (NumberofSensor - renew_startpoint)
     sum_falsealarm = 0   #initial sum/fusion of falsealarm
 
-    for find_threshold = startpoint : NumberofSensor
+    for find_threshold = startpoint : NumberofSensor    #compute sum of fusion value for find fit threshold
 
+      buffer_sum = binomial(NumberofSensor,find_threshold)*((FalseofSensor)^find_threshold)*((1-FalseofSensor)^(NumberofSensor-find_threshold))   #binomial
+      sum_falsealarm = sum_falsealarm + buffer_sum
 
-      buffer_sum = nchoosek(NumberOfSensor,flag_2)*((F_Sensor)^flag_2)*((1-F_Sensor)^(NumberOfSensor-flag_2))
+    end
+
+    if sum_falsealarm >= FalseofCenter
+
+      threshold = startpoint + 1
+
 
 
     end
 
 
+
+
   end
-
-
 
 
 
