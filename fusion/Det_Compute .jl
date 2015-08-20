@@ -1,7 +1,8 @@
-# Deterministic Rule
-# Compute Detection and Falsealarm without care Minumun number of sensor
-# We can't compute fusion value without decide a threshold value, I fix falsealarm value to obtain threshold here.
-
+#=
+Deterministic Rule
+Compute Detection and Falsealarm without care Minumun number of sensor
+We can't compute fusion value without decide a threshold value, I fix falsealarm value to obtain threshold here.
+=#
 
 function (NumofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
 
@@ -19,15 +20,29 @@ function (NumofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
 
     end
 
-    if sum_falsealarm >= FalseofCenter
+    if sum_falsealarm >= FalseofCenter  #check fusion velue
 
       threshold = startpoint + 1
+
+      Fusion_falsealarm = 0   #initial output
+      Fusion_detection = 0
+
+      for compute_output = threshold : NumberofSensor   #compute output
+
+        buffer_falsealarm = binomial(NumberofSensor,compute_output)*((FalseofSensor)^compute_output)*((1-FalseofSensor)^(NumberofSensor-compute_output))
+        buffer_detection = binomial(NumberofSensor,compute_output)*((DetectofSensor)^compute_output)*((1-DetectofSensor)^(NumberofSensor-compute_output))
+
+        Fusion_falsealarm = Fusion_falsealarm + buffer_falsealarm
+        Fusion_detection = Fusion_detection + buffer_detection
+
+      end
+
+      println   #yoheyyyyyyyyyyyyyyy sh*t
+
 
 
 
     end
-
-
 
 
   end
@@ -37,3 +52,4 @@ function (NumofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
 
 
 end
+
