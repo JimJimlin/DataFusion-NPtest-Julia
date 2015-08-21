@@ -22,7 +22,7 @@ function det_compute(NumberofSensor, FalseofSensor, DetectofSensor, FalseofCente
 
     if sum_falsealarm >= FalseofCenter  #check fusion velue
 
-      threshold = startpoint + 1
+      threshold = startpoint + 1   #notice + 1
 
       Fusion_falsealarm = 0   #initial output
       Fusion_detection = 0
