@@ -4,7 +4,7 @@ Compute Detection and Falsealarm without care Minumun number of sensor
 We can't compute fusion value without decide a threshold value, I fix falsealarm value to obtain threshold here.
 =#
 
-function (NumofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
+function det_compute(NumberofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
 
   threshold = 0  #initial threshold
 
@@ -37,19 +37,19 @@ function (NumofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
 
       end
 
-      println   #yoheyyyyyyyyyyyyyyy sh*t
+      println("Threshold")
+      println(threshold)
 
+      println("Detection rate")
+      println(Fusion_detection)
 
+      println("Falsealarm rate")
+      println(Fusion_falsealarm)
 
+      break
 
     end
 
-
   end
 
-
-
-
-
 end
-
