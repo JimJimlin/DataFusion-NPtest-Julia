@@ -7,9 +7,39 @@
 
 function find_threshold(FalseofSensor, DetectofSensor, FalseofTarget, DetectofTarget)
 
-  finder_startpoint = 0   #initial finder to find threshold
+  mim_sensor = 0   #initial minimum number of sensor
 
-  for
+  while(true)   #find loop
+
+    min_sensor++
+
+    for inverse_start = 0 : min_sensor   # inverse start_point for compute binomial sum
+
+      start_point = min_sensor - inverse_start
+
+      sum_falsealarm = 0
+      sum_detection = 0
+
+      for compute = start_point : min_sensor
+
+        buffer_sum_f = binomial(min_sensor,compute)*((FalseofSensor)^compute)*((1-FalseofSensor)^(min_sensor-compute))
+        sum_falsealarm = sum_falsealarm + buffer_sum_f
+
+        buffer_sum_d = binomial(min_sensor,compute)*((DetectofSensor)^compute)*((1-DetectofSensor)^(min_sensor-compute))
+        sum_detection = sum_detection + buffer_sum_d
+
+      end
+
+      if sum_falsealarm
+
+
+      end
+
+
+    end
+
+  end
+
 
 end
 
