@@ -2,7 +2,7 @@
 - Deterministic Rule
 - Under specific Falsealarm and Detection, find 'Minimum number of sensor' and 'threshold'
 - the threshold of 'detection' rate equal to threshold of 'falsealarm' rate
-- last change:
+- last change: 8/25/2015
 =#
 
 function find_threshold(FalseofSensor, DetectofSensor, FalseofTarget, DetectofTarget)
