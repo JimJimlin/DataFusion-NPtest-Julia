@@ -55,4 +55,4 @@ function det_compute(NumberofSensor, FalseofSensor, DetectofSensor, FalseofCente
 
 end
 
-det_compute(10,0.2,0.8,0.1)
+det_compute(10,0.2,0.8,0.1)   #test

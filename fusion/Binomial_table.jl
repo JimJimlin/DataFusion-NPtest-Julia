@@ -15,4 +15,4 @@ function binomial_table(Number, Probability)
 
 end
 
-binomial_table(5, 0.6)
+binomial_table(5, 0.6)    #test
