@@ -19,3 +19,17 @@ Notice that if you compute sum from all factor in array, the answer = 1.
 - last change: /2015
 =#
 
+function joint_probability(NumofA, ProofA, NumofB, ProofB)
+
+  total = NumofA + NumofB + 1
+
+  array = zeros(total,1)
+
+  for count = 1 : total
+
+    for
+
+  end
+
+end
+
