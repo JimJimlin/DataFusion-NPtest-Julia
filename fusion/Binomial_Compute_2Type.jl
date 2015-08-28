@@ -27,9 +27,28 @@ function joint_probability(NumofA, ProofA, NumofB, ProofB)
 
   for count = 1 : total
 
-    for
+    for pin_a = 0 : (count-1)
+
+      if (pin_a <= NumofA)
+
+        if (((count - 1) - pin_a) <= NumofB)
+
+          array[count,1] = array[count,1] + ( ( binomial(NumofA,pin_a)*((ProofA)^pin_a)*((1-ProofA)^(NumofA-pin_a)) ) * (binomial(NumofB,((count-1)-pin_a))*((ProofB)^((count-1)-pin_a))*((1-ProofB)^(NumofB-((count-1)-pin_a)))) )
+
+        end
+
+      end
+
+    end
+
+  end
+
+  for print_array = 1 : total
+
+    println(array[print_array,1])
 
   end
 
 end
 
+joint_probability(1, 0.8, 2, 0.6)   #test
