@@ -7,7 +7,7 @@ function binomial_table(Number, Probability)
 
   for successive_values = 0 : Number
 
-    binomial_sum = binomial(Number,successive_values)*((Probability)^successive_values)*((1-Probability)^(Number-successive_values));
+    binomial_sum = binomial(Number,successive_values)*((Probability)^successive_values)*((1-Probability)^(Number-successive_values))
     println(" ")
     println(Number," ",successive_values," ",binomial_sum)
 
@@ -15,4 +15,4 @@ function binomial_table(Number, Probability)
 
 end
 
-binomial_table(5, 0.6)    #test
+binomial_table(3, 0.6)    #test
