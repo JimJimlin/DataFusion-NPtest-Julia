@@ -16,7 +16,7 @@ Count = 3 : (0, 3), (1, 2),,,,,
 This function will compute summation each Count, input a array.
 Notice that if you compute sum from all factor in array, the answer = 1.
 
-- last change: /2015
+- last change: 8/31/2015
 =#
 
 function joint_probability(NumofA, ProofA, NumofB, ProofB)
@@ -51,4 +51,4 @@ function joint_probability(NumofA, ProofA, NumofB, ProofB)
 
 end
 
-joint_probability(1, 0.8, 2, 0.6)   #test
+joint_probability(1, 0.8, 5, 0.6)   #test

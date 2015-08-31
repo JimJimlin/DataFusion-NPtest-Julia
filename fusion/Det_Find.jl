@@ -8,7 +8,7 @@
 function find_threshold(FalseofSensor, DetectofSensor, FalseofTarget, DetectofTarget)
 
   min_sensor = 0 #initial minimum number of sensor
-  max_testnumber = 100
+  max_testnumber = 500
   threshold_f = 0
   threshold_d = 0
 
