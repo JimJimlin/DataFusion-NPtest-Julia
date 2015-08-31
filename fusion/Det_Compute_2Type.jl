@@ -20,9 +20,16 @@ Ans:
 
 function det_fusiontwotype(NumofFix, FalseofTarget, DetectofTarget, FalseofFix, DetectofFix, FalseofMove, DetectofMove )
 
-  max_testnumber = 500
+  max_testnumber = 250
+
+  for NumofMove = 0: max_testnumber  #Find Number of Move
+
+    sensor_total = NumofFix + NumofMove
+
+    sensor_buffer = zeros(2, sensor_total)
 
 
 
+  end  #first loop: for
 
-end
+end  #function
