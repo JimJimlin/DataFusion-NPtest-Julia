@@ -51,4 +51,4 @@ function joint_probability(NumofA, ProofA, NumofB, ProofB)
 
 end
 
-joint_probability(1, 0.8, 5, 0.6)   #test
+joint_probability(4, 0.2, 1, 0.4)   #test
