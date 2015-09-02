@@ -43,94 +43,32 @@ function det_fusiontwotype(NumofFix, FalseofTarget, DetectofTarget, FalseofFix, 
         temp_sum_f = joint_probability_f_array[compute,1]
         temp_sum_d = joint_probability_d_array[compute,1]
 
+        sum_falsealarm = sum_falsealarm + temp_sum_f
+        sum_detection = sum_detection + temp_sum_d
 
       end
 
-    end
+      if sum_falsealarm >= FalseofTarget | sum_detection >= DetectofTarget
 
+        threshold_f = start_point +1
+        threshold_d = start_point
+
+        break
+
+      end
+
+    end  # inverse loop
+
+    if threshold_f == threshold_d
+
+      println("Number of type-II sensor")
+      println(NumofMove)
+
+      println("Threshold")
+      println(threshold_d)
+
+    end
 
   end  # find loop
 
-
 end  # function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#=
-
-function det_fusiontwotype(NumofFix, FalseofTarget, DetectofTarget, FalseofFix, DetectofFix, FalseofMove, DetectofMove )
-
-  max_testnumber = 250
-
-  for NumofMove = 0: max_testnumber  #Find Number of Move
-
-    sensor_total = NumofFix + NumofMove
-
-    #=
-    sensor_buffer = zeros(2, sensor_total)
-
-    for quality_in = 1 : NumofFix    # input sensor quality in work buffer
-
-      sensor_buffer[1, quality_in] = DetectofFix
-      sensor_buffer[2, quality_in] = FalseofFix
-
-    end
-
-    for quality_in = (NumofFix + 1) : sensor_total   # input sensor quality in work buffer
-
-      sensor_buffer[1, quality_in] = DetectofMove
-      sensor_buffer[2, quality_in] = FalseofMove
-
-    end
-
-    probability_buffer = zeros(4, sensor_total)  #Use to compute probability of senor-fix and sensor-move
-    =#
-
-
-
-
-
-  end  #first loop: for
-
-end  #function
-
-=#
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

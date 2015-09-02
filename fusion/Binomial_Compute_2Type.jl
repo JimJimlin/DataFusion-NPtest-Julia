@@ -43,12 +43,15 @@ function joint_probability(NumofA, ProofA, NumofB, ProofB)
 
   end
 
+  return array
+#=
   for print_array = 1 : total
 
     return(array[print_array,1])
 
   end
+=#
 
 end
 
-#joint_probability(4, 0.2, 1, 0.4)   #test
+joint_probability(4, 0.2, 1, 0.4)   #test
