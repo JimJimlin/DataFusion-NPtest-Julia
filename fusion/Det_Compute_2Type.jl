@@ -18,26 +18,42 @@ Ans:
 - last change:
 =#
 
-# using Binomial_Compute_2Type.jl
+include("Binomial_Compute_2Type.jl")
 
-joint_probability(4, 0.2, 1, 0.4)
-
-#=
 function det_fusiontwotype(NumofFix, FalseofTarget, DetectofTarget, FalseofFix, DetectofFix, FalseofMove, DetectofMove )
+
+  max_testnumber = 500
 
   for NumofMove = 0: max_testnumber  #Find Number of Move
 
+    sensor_total = NumofFix + NumofMove
+
+    joint_probability_f_array = joint_probability(NumofFix, FalseofFix, NumofMove, FalseofMove)
+    joint_probability_d_array = joint_probability(NumofFix, DetectofFix, NumofMove, DetectofMove)
+
+    for inverse_start = 0 : sensor_total  # inverse start point for find threshold
+
+      start_point = (sensor_total - inverse_start)
+
+      sum_falsealarm = 0
+      sum_detection = 0
+
+      for compute = start_point : sensor_total
+
+        temp_sum_f = joint_probability_f_array[compute,1]
+        temp_sum_d = joint_probability_d_array[compute,1]
 
 
+      end
+
+    end
 
 
   end  # find loop
 
 
-
-
 end  # function
-=#
+
 
 
 

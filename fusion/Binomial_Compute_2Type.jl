@@ -43,8 +43,6 @@ function joint_probability(NumofA, ProofA, NumofB, ProofB)
 
   end
 
-  return a = array
-
   for print_array = 1 : total
 
     return(array[print_array,1])
