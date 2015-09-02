@@ -25,6 +25,8 @@ function det_fusiontwotype(NumofFix, FalseofTarget, DetectofTarget, FalseofFix, 
   for NumofMove = 0: max_testnumber  #Find Number of Move
 
     sensor_total = NumofFix + NumofMove
+
+    #=
     sensor_buffer = zeros(2, sensor_total)
 
     for quality_in = 1 : NumofFix    # input sensor quality in work buffer
@@ -42,6 +44,9 @@ function det_fusiontwotype(NumofFix, FalseofTarget, DetectofTarget, FalseofFix, 
     end
 
     probability_buffer = zeros(4, sensor_total)  #Use to compute probability of senor-fix and sensor-move
+    =#
+
+
 
 
 
