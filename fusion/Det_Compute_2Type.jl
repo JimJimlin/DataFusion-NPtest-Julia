@@ -18,57 +18,85 @@ Ans:
 - last change:
 =#
 
-include("Binomial_Compute_2Type.jl")
-
 function det_fusiontwotype(NumofFix, FalseofTarget, DetectofTarget, FalseofFix, DetectofFix, FalseofMove, DetectofMove )
 
-  max_testnumber = 500
+  include("Binomial_Compute_2Type.jl")
+
+  NumofMove = 0 # initial
+  max_testnumber = 10
+
+  threshold_f = 0
 
   for NumofMove = 0: max_testnumber  #Find Number of Move
 
-    sensor_total = NumofFix + NumofMove
+    sensor_total = NumofFix + NumofMove  + 1   # +1 for array index
 
     joint_probability_f_array = joint_probability(NumofFix, FalseofFix, NumofMove, FalseofMove)
     joint_probability_d_array = joint_probability(NumofFix, DetectofFix, NumofMove, DetectofMove)
+    println(joint_probability_d_array)
 
     for inverse_start = 0 : sensor_total  # inverse start point for find threshold
 
       start_point = (sensor_total - inverse_start)
 
       sum_falsealarm = 0
-      sum_detection = 0
 
       for compute = start_point : sensor_total
 
         temp_sum_f = joint_probability_f_array[compute,1]
-        temp_sum_d = joint_probability_d_array[compute,1]
 
         sum_falsealarm = sum_falsealarm + temp_sum_f
-        sum_detection = sum_detection + temp_sum_d
 
       end
 
-      if sum_falsealarm >= FalseofTarget | sum_detection >= DetectofTarget
+      if sum_falsealarm >= FalseofTarget
 
         threshold_f = start_point +1
-        threshold_d = start_point
 
         break
 
       end
 
-    end  # inverse loop
+    end  # inverse loop F
 
-    if threshold_f == threshold_d
+
+      sum_detection = 0
+      sum_falsealarm = 0
+
+      for compute = threshold_f : sensor_total
+
+        temp_sum_d = joint_probability_d_array[compute,1]
+        temp_sum_f = joint_probability_f_array[compute,1]
+
+        sum_detection = sum_detection + temp_sum_d
+        sum_falsealarm = sum_falsealarm + temp_sum_f
+
+      end
+
+    if sum_falsealarm <= FalseofTarget && sum_detection >= DetectofTarget && NumofMove ==0
 
       println("Number of type-II sensor")
       println(NumofMove)
 
       println("Threshold")
-      println(threshold_d)
+      println(threshold_f)
 
     end
+
+  if sum_falsealarm <= FalseofTarget && sum_detection >= DetectofTarget && NumofMove !=0
+
+      println("Number of type-II sensor")
+      println(NumofMove)
+
+      println("Threshold")
+      println(threshold_f)
+
+    end
+
 
   end  # find loop
 
 end  # function
+
+
+det_fusiontwotype(1,0.1,0.9,0.2,0.8,0.4,0.6)
