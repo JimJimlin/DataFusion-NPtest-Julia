@@ -65,10 +65,10 @@ function find_threshold(FalseofSensor, DetectofSensor, FalseofTarget, DetectofTa
 
       if threshold_f == threshold_d
 
-        println("Minmum number of sensor")
+        println("Minmum number of sensor=")
         println(min_sensor)
 
-        println("Threshold")
+        println("Threshold=")
         println(threshold_d)
 
         break
