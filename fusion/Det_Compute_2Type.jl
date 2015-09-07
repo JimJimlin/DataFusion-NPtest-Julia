@@ -18,6 +18,8 @@ Ans:
 - last change:
 =#
 
+
+#=
 function det_fusiontwotype(NumofFix, FalseofTarget, DetectofTarget, FalseofFix, DetectofFix, FalseofMove, DetectofMove )
 
   include("Binomial_Compute_2Type.jl")
@@ -100,3 +102,161 @@ end  # function
 
 
 det_fusiontwotype(1,0.1,0.9,0.2,0.8,0.4,0.6)
+=#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function DissimilarSensorFusion(NumberofTypeFix,Goal_F,Goal_D,TypeFixOfFalse,TypeFixOfDetection,TypeMoveOfFalse,TypeMoveOfDetection)
+
+
+MaxFindNumber = 200
+
+for NumberofTypeMove = 0 : MaxFindNumber
+    NumberOfALL = (NumberofTypeFix+NumberofTypeMove)
+
+    thresholdTofF = 0
+
+    for i = 0:NumberOfALL  # Watch out the ( 0:NumberOfSS )
+        egg = (NumberOfALL - i)
+        buffer_sum_b = 0
+
+        for j = egg:NumberOfALL
+
+            buffer_sum_a = 0
+
+            for k = 0:j
+                buffer_a = (j - k)
+                buffer_b = (j - buffer_a)
+
+                if buffer_a > NumberofTypeMove | buffer_b > NumberofTypeFix
+                    continue
+                else
+                    buffer_c = (binomial(NumberofTypeMove,buffer_a) * ((TypeMoveOfFalse)^buffer_a) * ((1 - TypeMoveOfFalse)^(NumberofTypeMove-buffer_a))) *(binomial(NumberofTypeFix,buffer_b) * ((TypeFixOfFalse)^buffer_b) * ((1 - TypeFixOfFalse)^(NumberofTypeFix-buffer_b)))
+                    buffer_sum_a = buffer_sum_a + buffer_c
+                end
+            end
+
+            buffer_sum_b = buffer_sum_b + buffer_sum_a
+
+        end
+
+        if buffer_sum_b >= Goal_F
+            thresholdTofF = egg+1
+            buffer_sum_b
+            break
+        end
+
+    end
+
+    buffer_sum_b = 0 # re initial
+    buffer_sum_e = 0
+
+    for j = thresholdTofF:NumberOfALL
+
+        buffer_sum_a = 0
+        buffer_sum_d = 0
+        for k = 0:j
+            buffer_a = (j - k)
+            buffer_b = (j - buffer_a)
+
+            if buffer_a > NumberofTypeMove | buffer_b > NumberofTypeFix
+                continue
+            else
+                buffer_c = (binomial(NumberofTypeMove,buffer_a) * ((TypeMoveOfFalse)^buffer_a) * ((1 - TypeMoveOfFalse)^(NumberofTypeMove-buffer_a))) * (binomial(NumberofTypeFix,buffer_b) * ((TypeFixOfFalse)^buffer_b) * ((1 - TypeFixOfFalse)^(NumberofTypeFix-buffer_b)))
+                buffer_sum_a = buffer_sum_a + buffer_c
+
+                buffer_f = (binomial(NumberofTypeMove,buffer_a) * ((TypeMoveOfDetection)^buffer_a) * ((1 - TypeMoveOfDetection)^(NumberofTypeMove-buffer_a))) *  (binomial(NumberofTypeFix,buffer_b) * ((TypeFixOfDetection)^buffer_b) * ((1 - TypeFixOfDetection)^(NumberofTypeFix-buffer_b)))
+                buffer_sum_d = buffer_sum_d + buffer_f
+
+            end
+        end
+
+        buffer_sum_b = buffer_sum_b + buffer_sum_a
+        buffer_sum_e = buffer_sum_e + buffer_sum_d
+    end
+
+    falsealarm = buffer_sum_b
+    detecetion = buffer_sum_e
+
+    if detecetion >= Goal_D &&  falsealarm <= Goal_F && NumberofTypeMove ==0
+      println("Number of type-II sensor =")
+      println(NumberofTypeMove)
+
+      println("Detection =")
+      println(detecetion)
+
+      println("Falsealarm =")
+      println(falsealarm)
+
+
+
+
+
+        break
+    end
+
+    if detecetion >= Goal_D &&  falsealarm <= Goal_F && NumberofTypeMove !=0
+       println("Number of type-II sensor =")
+      println(NumberofTypeMove)
+
+      println("Detection =")
+      println(detecetion)
+
+      println("Falsealarm =")
+      println(falsealarm)
+        break
+    end
+
+end
+
+end
+
+DissimilarSensorFusion(1, 0.1 , 0.9 , 0.2 , 0.8 , 0.4 , 0.6)

@@ -79,4 +79,4 @@ function find_threshold(FalseofSensor, DetectofSensor, FalseofTarget, DetectofTa
 
 end   #function
 
-find_threshold(0.2, 0.6, 0.05, 0.95)   #test
+find_threshold(0.4, 0.6, 0.01, 0.99)   #test
