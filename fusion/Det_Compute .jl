@@ -2,7 +2,7 @@
 - Deterministic Rule
 - Compute Detection and Falsealarm without care Minumun number of sensor
 - We can't compute fusion value without decide a threshold value, I fix falsealarm value to obtain threshold here.
-- last change: 8/21/2015
+- Last change: 8/21/2015
 =#
 
 function det_compute(NumberofSensor, FalseofSensor, DetectofSensor, FalseofCenter)
