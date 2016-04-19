@@ -1,6 +1,6 @@
 #=
 - Binomial_table
-- last change: 8/27/2015
+- Last change: 8/27/2015
 =#
 
 function binomial_table(Number, Probability)
